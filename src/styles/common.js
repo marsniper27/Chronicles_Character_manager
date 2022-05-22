@@ -11,6 +11,7 @@ export const OuterContainer = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  max-width: 1000px;
+  flex-direction: column; 
+  text-align:center;
+  max-width: 90%;
 `;

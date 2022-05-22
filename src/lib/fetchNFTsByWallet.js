@@ -43,10 +43,11 @@ export const fetchNFTsOwnedByWallet = async (userWallet, connection) => {
     .filter(function (element) {
       return element !== undefined;
     });
-  
-  for(let i = nftAcInfoDeserialized.length-1; i>=0;i--){
-    if (nftAcInfoDeserialized[i].updateAuthority !== 'GZJxdaxUEQiiV4WtrVoXWgau2w9fVsjYU2pxfRY8zvcs') {
-      nftAcInfoDeserialized.splice(i, 1);
+  if(nftAcInfoDeserialized !== undefined){
+    for(let i = nftAcInfoDeserialized.length-1; i>=0;i--){
+      if (nftAcInfoDeserialized[i].updateAuthority !== 'GZJxdaxUEQiiV4WtrVoXWgau2w9fVsjYU2pxfRY8zvcs') {
+        nftAcInfoDeserialized.splice(i, 1);
+      }
     }
   }
 

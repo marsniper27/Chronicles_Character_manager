@@ -8,6 +8,7 @@ import { NFTContainer } from "./components/NFTContainer";
 import { OuterContainer, Container } from "./styles/common";
 import { Header } from "./components/Header";
 
+
 function App() {
   // eslint-disable-next-line no-unused-vars
   const [network, setNetwork] = useState("mainnet-beta");
@@ -17,7 +18,7 @@ function App() {
         <OuterContainer>
           <Header />
           <Container className="App">
-            <h1>Gargoyles</h1>
+            <h1 >Gargoyles</h1>
             <NFTContainer network={network} />
           </Container>
         </OuterContainer>

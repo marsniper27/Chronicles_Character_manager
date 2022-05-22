@@ -60,7 +60,7 @@ export function NFTContainer({ network }) {
 
   async function selectNFTClick(nft){
     console.log(nft)
-    setselectednft(nft.data.name);
+    setselectednft(<NFTItem item={nft} />);
     console.log(selectednft)
   }
 
@@ -72,27 +72,36 @@ export function NFTContainer({ network }) {
             No NFTs found for <strong>{publicKey.toString()}</strong> on{" "}
             <strong>{network}</strong>!
           </p>
-          <Button onClick={onGetNFTClick}>Get NFTs</Button>
+          <Button onClick={onGetNFTClick}>Get Nfts</Button>
+        </Container>
+      );
+    }
+    if(NFTs === null){
+      return(
+        <Container>
+          <Button onClick={onGetNFTClick}>Get Nfts</Button>
         </Container>
       );
     }
     return (
       <div>
-        <Button onClick={onGetNFTClick}>Get NFTs</Button>
-        <h1>selected nft: {selectednft}</h1>
-      <GridContainer>
-          {NFTs &&
-            NFTs.map((item) => {
-              if (item.data.uri === "") return null;
-              return (
-                <div key={JSON.stringify(item)}>
-                  <NFTItem item={item} />
-                  <Button onClick ={()=>selectNFTClick(item)}>Select</Button>
-                </div>
-              );
-            })}
-      </GridContainer>
-      </div>
+      <Container>
+        <h1>Selected Gargoyl:{selectednft}</h1>
+      </Container>
+        <GridContainer>
+            {NFTs &&
+              NFTs.map((item) => {
+                if (item.data.uri === "") return null;
+                return (
+                  <div key={JSON.stringify(item)}>
+                    <NFTItem item={item} />
+                    <Button onClick ={()=>selectNFTClick(item)}>Select</Button>
+                  </div>
+                );
+              })}
+        </GridContainer>
+        </div>
+      //</Container>
     );
   } else {
     return null;
