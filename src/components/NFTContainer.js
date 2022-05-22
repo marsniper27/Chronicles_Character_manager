@@ -15,13 +15,21 @@ const Container = styled.div`
   text-align: center;
 `;
 const GridContainer = styled.div`
-display: grid;
-height: 100vh;
-width: 100%
-color: white;
-gap: 5px;
-grid-template: repeat(10, 1fr) / repeat(3, 1fr);
-text-align: center;
+  display: grid;
+  height: 100vh;
+  width: 100%
+  color: white;
+  gap: 5px;
+  grid-template: repeat(10, 1fr) / repeat(3, 1fr);
+  text-align: center;
+`;
+const SelectedContainer = styled.div`
+  margin: auto;
+  width: 30%;
+  border: 3px solid #73AD21;
+  text-align: center;
+  padding: 10px;
+  font-size: 10px;
 `;
 
 // grid-auto-rows: minmax(50px, auto);
@@ -85,9 +93,9 @@ export function NFTContainer({ network }) {
     }
     return (
       <div>
-      <Container>
-        <h1>Selected Gargoyl:{selectednft}</h1>
-      </Container>
+      <SelectedContainer>
+        <h1>Selected Gargoyle: {selectednft}</h1>
+      </SelectedContainer>
         <GridContainer>
             {NFTs &&
               NFTs.map((item) => {
