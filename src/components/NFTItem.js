@@ -16,7 +16,6 @@ export function NFTItem({ item }) {
   useEffect(() => {
     async function getData() {
       let data = await (await fetch(item?.data?.uri)).json();
-      //console.log(data);
       setNFTData(data);
     }
     getData();
