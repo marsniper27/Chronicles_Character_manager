@@ -52,8 +52,10 @@ export function NFTContainer({ network }) {
   const { publicKey } = useWallet();
   const [NFTs, setNFTs] = useState(null);
   const [selectednft, setselectednft] = useState('No Gargoyle Selected');
+  const [ buttonText, setbuttonTest]= useState('Get NFTS')
 
   async function onGetNFTClick() {
+    setbuttonTest ('Fetching NFTS');
     if (!publicKey) return setNFTs(null);
     let NFTs = await fetchNFTsOwnedByWallet(
       new PublicKey(publicKey),
@@ -74,20 +76,21 @@ export function NFTContainer({ network }) {
 
   if (publicKey) {
     if (NFTs === 0) {
+      setbuttonTest('Get NFTs');
       return (
         <Container>
           <p>
             No NFTs found for <strong>{publicKey.toString()}</strong> on{" "}
             <strong>{network}</strong>!
           </p>
-          <Button onClick={onGetNFTClick}>Get Nfts</Button>
+          <Button onClick={onGetNFTClick}>{buttonText}</Button>
         </Container>
       );
     }
     if(NFTs === null){
       return(
         <Container>
-          <Button onClick={onGetNFTClick}>Get Nfts</Button>
+          <Button onClick={onGetNFTClick}>{buttonText}</Button>
         </Container>
       );
     }
