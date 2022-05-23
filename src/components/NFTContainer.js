@@ -20,7 +20,7 @@ const GridContainer = styled.div`
   width: 100%
   color: white;
   gap: 5px;
-  grid-template: repeat(10, 1fr) / repeat(3, 1fr);
+  grid-template: repeat(10, 1fr) / repeat(4, 1fr);
   text-align: center;
 `;
 const SelectedContainer = styled.div`
