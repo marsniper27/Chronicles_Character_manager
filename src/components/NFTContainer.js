@@ -47,7 +47,7 @@ const Button = styled.button`
   }
 `;
 
-export function NFTContainer({ network }) {
+export function NFTContainer( {network}) {
   const { connection } = useConnection();
   const { publicKey } = useWallet();
   const [NFTs, setNFTs] = useState(null);

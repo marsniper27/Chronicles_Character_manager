@@ -9,12 +9,12 @@ import {
   getSolletExtensionWallet,
   getSolletWallet,
 } from "@solana/wallet-adapter-wallets";
-import { clusterApiUrl } from "@solana/web3.js";
+//import { clusterApiUrl } from "@solana/web3.js";
 import { useMemo } from "react";
 
 export const WalletConnectionProvider = ({ children, network = "mainnet-beta" }) => {
-  console.log('Netowrk:');
-  console.log(network);
+  // console.log('Network:');
+  // console.log(network);
 
   // You can also provide a custom RPC endpoint
   const endpoint = 'https://solana-api.projectserum.com';

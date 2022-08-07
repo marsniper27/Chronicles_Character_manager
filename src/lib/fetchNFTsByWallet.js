@@ -54,7 +54,6 @@ export const fetchNFTsOwnedByWallet = async (userWallet, connection) => {
   return nftAcInfoDeserialized;
 };
 
-//updateAuthority:'GZJxdaxUEQiiV4WtrVoXWgau2w9fVsjYU2pxfRY8zvcs'
 
 export async function fetchMetadataAccountForNFT(nftMintKey) {
   const metadataBuffer = Buffer.from("metadata");

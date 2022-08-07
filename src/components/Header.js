@@ -18,12 +18,12 @@ const InnerContainer = styled.nav`
   padding: 0 2em;
 `;
 
-const LeftNav = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-`;
+// const LeftNav = styled.ul`
+//   list-style: none;
+//   display: flex;
+//   flex-direction: row;
+//   padding: 0;
+// `;
 
 const RightNav = styled.ul`
   list-style: none;
@@ -31,18 +31,18 @@ const RightNav = styled.ul`
   flex-direction: row;
 `;
 
-const NavItem = styled.button`
-  border: none;
-  font-size: 1em;
-  color: white;
-  background-color: var(--purple);
-  padding: 1.3em;
-  font-weight: 800;
-  border-radius: 5px;
-  :hover {
-    cursor: pointer;
-  }
-`;
+// const NavItem = styled.button`
+//   border: none;
+//   font-size: 1em;
+//   color: white;
+//   background-color: var(--purple);
+//   padding: 1.3em;
+//   font-weight: 800;
+//   border-radius: 5px;
+//   :hover {
+//     cursor: pointer;
+//   }
+// `;
 const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
