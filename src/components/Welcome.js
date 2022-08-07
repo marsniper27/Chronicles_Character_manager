@@ -17,27 +17,39 @@ const oauth = new DiscordOauth2({
 
 export function Welcome() {
 
- const [discordName, setDiscordName] = useState("help me");
+ const [discordName, setDiscordName] = useState("");
 
-    return (
-        <Container>
-            <h1 >Gargoyles</h1>
-            <h1>Welcome {discordName}</h1>
+    if(discordName === "" ){
+        return (
+            <Container>
+                <h1 >Gargoyles</h1>
+                <h1>Welcome {discordName}</h1>
                 <p>Discord name {discordName}</p>
-            <button onClick={() => {
-                if(window.location.search !== ""){
-                    oauth.tokenRequest({
-                        code: window.location.search.slice(6),
-                        scope: "identify",    
-                        grantType: "authorization_code",
-                    }).then((res)=>{
-                        oauth.getUser(res.access_token).then((account) =>{
-                        setDiscordName(account.username) 
+                
+                <button onClick={() => {
+                    if(window.location.search !== ""){
+                        oauth.tokenRequest({
+                            code: window.location.search.slice(6),
+                            scope: "identify",    
+                            grantType: "authorization_code",
+                        }).then((res)=>{
+                            oauth.getUser(res.access_token).then((account) =>{
+                            setDiscordName(account.username) 
+                            }).catch(console.error);
                         }).catch(console.error);
-                    }).catch(console.error);
-                }}}>
-            Get Discord Account
-            </button>
-        </Container>
-    )
+                    }}}>
+                Get Discord Account
+                </button>
+            </Container>
+        )
+    }
+    else{
+        return (
+            <Container>
+                <h1 >Gargoyles</h1>
+                <h1>Welcome {discordName}</h1>
+            </Container>
+        )
+
+    }
 }
