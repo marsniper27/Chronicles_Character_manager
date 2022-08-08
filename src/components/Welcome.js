@@ -50,6 +50,5 @@ export function Welcome() {
                 <h1>Welcome {discordName}</h1>
             </Container>
         )
-
     }
 }

@@ -5,17 +5,10 @@ import { WalletConnectionProvider } from "./components/WalletConnectionProvider"
 
 import { NFTContainer } from "./components/NFTContainer";
 import { Welcome } from "./components/Welcome";
+// import { SqlInterface } from "./components/SqlInterface";
 
 import { OuterContainer, Container } from "./styles/common";
 import { Header } from "./components/Header";
-
-// const DiscordOauth2 = require("discord-oauth2");
-// const oauth = new DiscordOauth2({
-//   clientId: '975582303734607872',
-//   clientSecret: '6m8r3KkaP3xiwPVIk4iLDMep-HcAD6F5',
-//   redirectUri: 'http://localhost:3000',
-// });
-//var accountName=account();
 
 function App() {
   // eslint-disable-next-line no-unused-vars
@@ -27,6 +20,7 @@ function App() {
           <Header />
           <Container className="App">
             <Welcome/>
+            ?<SqlInterface/>
             <NFTContainer network={network}/>
           </Container>
         </OuterContainer>
