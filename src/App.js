@@ -20,7 +20,7 @@ function App() {
           <Header />
           <Container className="App">
             <Welcome/>
-            ?<SqlInterface/>
+            {/* <SqlInterface/> */}
             <NFTContainer network={network}/>
           </Container>
         </OuterContainer>

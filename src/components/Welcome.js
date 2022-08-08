@@ -23,8 +23,7 @@ export function Welcome() {
         return (
             <Container>
                 <h1 >Gargoyles</h1>
-                <h1>Welcome {discordName}</h1>
-                <p>Discord name {discordName}</p>
+                <h1>Welcome</h1>
                 
                 <button onClick={() => {
                     if(window.location.search !== ""){
