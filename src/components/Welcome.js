@@ -13,8 +13,8 @@ const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2({
   clientId: '975582303734607872',
   clientSecret: '6m8r3KkaP3xiwPVIk4iLDMep-HcAD6F5',
-  redirectUri: 'http://localhost:3000',
-  //redirectUri: 'https://gentle-tooth-0749.on.fleek.co/',
+//   redirectUri: 'http://localhost:3000',
+  redirectUri: 'https://gentle-tooth-0749.on.fleek.co/',
 });
 
 export function Welcome() {
@@ -71,8 +71,8 @@ export function Welcome() {
         return (
             <Container>
                 <h1>Welcome</h1>
-                <button onClick={() => {window.open("https://discord.com/api/oauth2/authorize?client_id=975582303734607872&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=code&scope=identify", '_self', 'noopener,noreferrer');}}>
-                {/* <button onClick={() => {window.open("https://discord.com/oauth2/authorize?client_id=975582303734607872&redirect_uri=https%3A%2F%2Fgentle-tooth-0749.on.fleek.co%2F&response_type=code&scope=identify", '_self', 'noopener,noreferrer');}}> */}
+                {/* <button onClick={() => {window.open("https://discord.com/api/oauth2/authorize?client_id=975582303734607872&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=code&scope=identify", '_self', 'noopener,noreferrer');}}> */}
+                <button onClick={() => {window.open("https://discord.com/oauth2/authorize?client_id=975582303734607872&redirect_uri=https%3A%2F%2Fgentle-tooth-0749.on.fleek.co%2F&response_type=code&scope=identify", '_self', 'noopener,noreferrer');}}>
                 Authorize Discord
                 </button>
             </Container>
