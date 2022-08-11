@@ -7,6 +7,7 @@ import { PublicKey } from "@solana/web3.js";
 import { fetchNFTsOwnedByWallet } from "../lib/fetchNFTsByWallet";
 
 import { NFTItem } from "./NFTItem";
+import { SelectedGarg } from "./SelectedGarg";
 
 const Container = styled.div`
   display: flex;
@@ -23,14 +24,14 @@ const GridContainer = styled.div`
   grid-template: repeat(10, 1fr) / repeat(4, 1fr);
   text-align: center;
 `;
-const SelectedContainer = styled.div`
-  margin: auto;
-  width: 30%;
-  border: 3px solid #73AD21;
-  text-align: center;
-  padding: 10px;
-  font-size: 10px;
-`;
+// const SelectedContainer = styled.div`
+//   margin: auto;
+//   width: 30%;
+//   border: 3px solid #73AD21;
+//   text-align: center;
+//   padding: 10px;
+//   font-size: 10px;
+// `;
 
 // grid-auto-rows: minmax(50px, auto);
 // grid-auto-columns: minmax(10px, auto);
@@ -53,6 +54,7 @@ export function NFTContainer( {network}) {
   const [NFTs, setNFTs] = useState(null);
   const [selectednft, setselectednft] = useState('No Gargoyle Selected');
   const [ buttonText, setbuttonTest]= useState('Get NFTS')
+  
 
   async function onGetNFTClick() {
     setbuttonTest ('Fetching NFTS');
@@ -69,9 +71,9 @@ export function NFTContainer( {network}) {
   }
 
   async function selectNFTClick(nft){
-    console.log(nft)
+    // console.log(nft)
     setselectednft(<NFTItem item={nft} />);
-    console.log(selectednft)
+    // console.log(selectednft)
   }
 
   if (publicKey) {
@@ -96,9 +98,7 @@ export function NFTContainer( {network}) {
     }
     return (
       <div>
-      <SelectedContainer>
-        <h1>Selected Gargoyle: {selectednft}</h1>
-      </SelectedContainer>
+        <SelectedGarg selectednft = {selectednft}/>
         <GridContainer>
             {NFTs &&
               NFTs.map((item) => {

@@ -5,7 +5,7 @@ import { WalletConnectionProvider } from "./components/WalletConnectionProvider"
 
 import { NFTContainer } from "./components/NFTContainer";
 import { Welcome } from "./components/Welcome";
-// import { SqlInterface } from "./components/SqlInterface";
+import { SqlInterface } from "./components/SqlInterface";
 
 import { OuterContainer, Container } from "./styles/common";
 import { Header } from "./components/Header";
@@ -19,8 +19,8 @@ function App() {
         <OuterContainer>
           <Header />
           <Container className="App">
+            <h1 >Gargoyles</h1>
             <Welcome/>
-            {/* <SqlInterface/> */}
             <NFTContainer network={network}/>
           </Container>
         </OuterContainer>

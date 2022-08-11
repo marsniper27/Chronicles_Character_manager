@@ -1,18 +1,32 @@
-//import Database from 'better-sqlite3';
-//const db = require('better-sqlite3')('E:/kyle projects/Chronicles/game-bot/test-data/josh.sqlite', { verbose: console.log });
-// import sqlite3 from 'sqlite3'
-// import { open } from 'sqlite'
+import React,{useState, useEffect} from 'react';
+import Axios from 'axios'
 
-// // you would have to import / invoke this in another file
-// export async function openDb () {
-//   return open({
-//     filename: '/tmp/database.db',
-//     driver: sqlite3.Database
-//   })
+export function SqlInterface(){
+  const [userName,setUserName] = useState("");
+  const [gargId,setGargId] = useState("");
+  const [currentGarg, setCurrentGarg] = useState(null);
+
+  // function setGarg(garg){
+  //   setCurrentGarg(garg)
+  //   // const submitPost = () => {
+  //   //   Axios.post('http://localhost:3002/api/create', {userName: userName, gargId: gargId})
+  //   // }
+  // }
+  return [currentGarg, setCurrentGarg]
+}
+
+
+// export function setGarg(garg) {
+//   SqlInterface().setCurrentGarg(garg)
+//   // const submitPost = () => {
+//   //   Axios.post('http://localhost:3002/api/create', {userName: userName, gargId: gargId})
+//   // }
 // }
 
-// export function SqlInterface(){
-//     return(
-//         <p>database</p>
-//     )
-// }
+export function getUserData(wallet){
+  Axios.get('http://65.108.213.230:3000/api/getFromId/${id}').then((data)=>{
+    SqlInterface.setDiscordId(data.ID)
+    SqlInterface.setDiscordName(data.User)
+    SqlInterface.setCurrentGarg(data.Gargoyle)
+  });
+}
