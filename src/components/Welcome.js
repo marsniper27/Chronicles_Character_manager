@@ -37,11 +37,11 @@ export function Welcome() {
                 }).catch(console.error);
             }).catch(console.error);
         }
-        Axios.get('http://65.108.213.230:3000/api/getFromId/${id}').then((data)=>{
-            setDiscordId(data.ID)
-            setDiscordName(data.User)
-        //     setCurrentGarg(data.Gargoyle)
-        });
+        // Axios.get('http://65.108.213.230:3000/api/getFromId/${id}').then((data)=>{
+        //     setDiscordId(data.ID)
+        //     setDiscordName(data.User)
+        // //     setCurrentGarg(data.Gargoyle)
+        // });
     },[])
 
     if(discordName === "" & window.location.search !== ""){
