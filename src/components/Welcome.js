@@ -14,8 +14,8 @@ text-align: center;
 const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2({
   clientId: '975582303734607872',
-  clientSecret: 'bhNUHqFB7g8eiXehYrmBwQKXcTjZYxY-',
-  //redirectUri: 'http://localhost:3000',
+  clientSecret: '6m8r3KkaP3xiwPVIk4iLDMep-HcAD6F5',
+  //   redirectUri: 'http://localhost:3000',
   redirectUri: 'https://gentle-tooth-0749.on.fleek.co/',
 });
 
