@@ -1,15 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { NFTItem } from "./NFTItem";
-import Axios from 'axios'
-import { Container } from "../styles/common";
-//import{SqlInterface} from "./SqlInterface";
+import{setGarg} from "./SqlInterface";
 
 
 const GridContainer = styled.div`
   display: grid;
-  height: 100vh;
-  width: 100%
+  width: 80%
   color: white;
   gap: 5px;
   grid-template: repeat(1, 1fr) / repeat(2, 1fr);
@@ -18,7 +14,8 @@ const GridContainer = styled.div`
 
 const SelectedContainer = styled.div`
 margin: auto;
-width: 80%;
+width: 50%;
+width-max:100px;
 border: 3px solid #73AD21;
 text-align: center;
 padding: 10px;
@@ -38,35 +35,30 @@ const Button = styled.button`
 `;
 
 
-export function SelectedGarg( {selectednft}) {
+export function SelectedGarg( props) {
+    const selectednft = props.selectednft;
+    const discordUser = props.discordUser
     const [currentGarg, setCurrentGarg] = useState(null);
-
-    // useEffect(()=>{
-    //     Axios.get('http://65.108.213.230:3000/api/getGargFromId/${id}').then((data)=>{
-    //         setCurrentGarg(data.Gargoyle)
-    //     });
-    // },[])
+    const [currentSet, setCurrentSet] = useState(props.fromDB);
+    //const [discordUser, setDiscordUser] =useContext(UserContext);
+    
+    useEffect(()=>{
+        if(props.selectednft !== 'No Gargoyle Selected' & currentSet){
+            setCurrentGarg(props.selectednft)
+            setCurrentSet(false)
+        }
+    },[props.selectednft])
+    
   
-    function setGarg(){
+    function confirmGarg(){
         setCurrentGarg(selectednft)
-    //     console.log(currentGarg)
-    //     // const submitPost = () => {
-    //         // Axios.post('http://localhost:3002/api/create', {userName: userId, gargId: gargId})
-    //     //   }
+        setGarg(selectednft,discordUser.id)
     }
-  
-//   if(selectednft !== 'No Gargoyle Selected' && currentGarg === null){
-//     return(
-//         <SelectedContainer>
-//             <h1>Selected Gargoyle: {selectednft}</h1>
-//         </SelectedContainer>
-//     )
-//   }
     if(selectednft !== 'No Gargoyle Selected' && currentGarg === null){
         return (
             <SelectedContainer>
                 <h1>Selected Gargoyle: {selectednft}</h1>
-                <Button onClick={setGarg}>Confirm Garg</Button>
+                <Button onClick={confirmGarg}>Confirm Garg</Button>
             </SelectedContainer>
         )
     }
@@ -78,7 +70,7 @@ export function SelectedGarg( {selectednft}) {
                 </SelectedContainer>
                 <SelectedContainer>
                     <h1>Selected Gargoyle: {selectednft}</h1>
-                    <Button onClick={setGarg}>Confirm Garg</Button>
+                    <Button onClick={confirmGarg}>Confirm Garg</Button>
                 </SelectedContainer>
             </GridContainer>
         )

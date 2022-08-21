@@ -1,0 +1,22 @@
+.layout {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    grid-template-rows: 1fr;
+    min-height: 100%;
+  }
+  
+  /* .header {
+    grid-area: 1 / 1 / 2 / 3;
+  } */
+  
+  .aside {
+    grid-area: 2 / 1 / 4 / 2;
+  }
+  
+  .main {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+  
+  .footer {
+    grid-area: 3 / 2 / 4 / 3;
+  }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styled from "styled-components";
 
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
@@ -48,13 +48,24 @@ const Button = styled.button`
   }
 `;
 
-export function NFTContainer( {network}) {
+export function NFTContainer( props) {
+  const network = props.network;
+  const discordUser = props.discordUser;
   const { connection } = useConnection();
   const { publicKey } = useWallet();
   const [NFTs, setNFTs] = useState(null);
   const [selectednft, setselectednft] = useState('No Gargoyle Selected');
   const [ buttonText, setbuttonTest]= useState('Get NFTS')
   
+  useEffect(()=>{
+      if(selectednft === 'No Gargoyle Selected' & NFTs !== null){
+        NFTs.forEach(nft => {
+          if(nft.data.name === props.currentGarg){
+            setselectednft(<NFTItem item={nft} />)
+          }
+        });
+      }
+  },[props.currentGarg,NFTs])
 
   async function onGetNFTClick() {
     setbuttonTest ('Fetching NFTS');
@@ -71,9 +82,7 @@ export function NFTContainer( {network}) {
   }
 
   async function selectNFTClick(nft){
-    // console.log(nft)
     setselectednft(<NFTItem item={nft} />);
-    // console.log(selectednft)
   }
 
   if (publicKey) {
@@ -98,7 +107,7 @@ export function NFTContainer( {network}) {
     }
     return (
       <div>
-        <SelectedGarg selectednft = {selectednft}/>
+        <SelectedGarg selectednft = {selectednft} discordUser = {discordUser} fromDB = {props.fromDB}/>
         <GridContainer>
             {NFTs &&
               NFTs.map((item) => {
@@ -111,8 +120,7 @@ export function NFTContainer( {network}) {
                 );
               })}
         </GridContainer>
-        </div>
-      //</Container>
+      </div>
     );
   } else {
     return null;

@@ -17,7 +17,7 @@ export const WalletConnectionProvider = ({ children, network = "mainnet-beta" })
   // console.log(network);
 
   // You can also provide a custom RPC endpoint
-  const endpoint = 'https://solana-api.projectserum.com';
+  const endpoint = 'https://solana-api.projectserum.com';//'https://solana-mainnet.g.alchemy.com/v2/DtwUWpHP3LKTvu3HKclT1l1lk4Le8UHu';//'https://solana-api.projectserum.com';
   console.log(endpoint)
 
   // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking --

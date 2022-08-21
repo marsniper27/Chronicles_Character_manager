@@ -27,7 +27,7 @@ export function NFTItem({ item }) {
       {NFTData &&
         NFTData?.attributes?.map((attr) => {
           return (
-            <div>
+            <div key= {attr.trait_type}>
               <p>
                 <strong>{attr.trait_type}: </strong>
                 {attr.value}

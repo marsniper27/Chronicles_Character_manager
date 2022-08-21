@@ -6,12 +6,13 @@ export const OuterContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%auto;
+  height: 100%;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column; 
   text-align:center;
-  max-width: 90%;
+  width: 100%;
+  height: 100%;
 `;

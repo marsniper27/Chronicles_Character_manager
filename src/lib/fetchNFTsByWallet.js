@@ -14,6 +14,8 @@ export const fetchNFTsOwnedByWallet = async (userWallet, connection) => {
     connection,
     userWallet
   );
+  
+  
   const accountsWithAmount = accounts
     .map(({ data }) => data)
     .filter(({ amount }) => amount?.toNumber() > 0);
@@ -27,12 +29,12 @@ export const fetchNFTsOwnedByWallet = async (userWallet, connection) => {
     nftMetadataAddresses[i] = await fetchMetadataAccountForNFT(
       nftMintAddresses[i]
     );
-
-    nftAcInfo = await connection.getMultipleAccountsInfo(
-      nftMetadataAddresses,
-      "processed"
-    );
   }
+  
+  nftAcInfo = await connection.getMultipleAccountsInfo(
+    nftMetadataAddresses,
+    "processed"
+  );
 
   let nftAcInfoDeserialized = nftAcInfo
     ?.map((info) =>
@@ -71,6 +73,6 @@ export async function fetchMetadataAccountForNFT(nftMintKey) {
       metadataProgramIdPublicKey
     )
   )[0];
-
+  
   return metadataAccount;
 }
