@@ -1,7 +1,22 @@
 import React, { useState } from 'react';
-import { Document, Page } from 'react-pdf';
-
+import { Document, Page,pdfjs } from 'react-pdf';
 import samplePDF from '../assets/Gargoyles Vol 1.pdf';
+import styled from "styled-components";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
+const PdfDiv = styled.div`
+    display: flex;
+    flexFlow: column nowrap;
+    justify-content: center;
+    vertical-align:middle;
+    width: 100%;
+    min-height: 50px;
+    background-color: var(--black);
+    border-bottom: 3px solid #d4af37;
+`;
+const PageDiv = styled.div`
+    color:var(--gray)
+`;
 
 export  function Comic() {
   const [numPages, setNumPages] = useState(null);
@@ -26,13 +41,15 @@ export  function Comic() {
 
   return (
     <>
+    <PdfDiv>
       <Document
         file={samplePDF}
         onLoadSuccess={onDocumentLoadSuccess}
       >
-        <Page pageNumber={pageNumber} />
+        <Page pageNumber={pageNumber}/>
       </Document>
-      <div>
+    </PdfDiv>
+      <PageDiv>
         <p>
           Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
         </p>
@@ -50,7 +67,7 @@ export  function Comic() {
         >
           Next
         </button>
-      </div>
+      </PageDiv>
     </>
   );
 }

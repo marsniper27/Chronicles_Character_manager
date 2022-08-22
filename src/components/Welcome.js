@@ -9,13 +9,15 @@ display: flex;
 flex-direction: column;
 padding: 1em 0;
 text-align: center;
+color: #3a3b3c;
+background: #000000;
 `;
 
 const DiscordOauth2 = require("discord-oauth2");
 const oauth = new DiscordOauth2({
   clientId: '975582303734607872',
   clientSecret: '6m8r3KkaP3xiwPVIk4iLDMep-HcAD6F5',
-  //   redirectUri: 'http://localhost:3000',
+  //redirectUri: 'http://localhost:3000',
   redirectUri: 'https://gentle-tooth-0749.on.fleek.co/',
 });
 

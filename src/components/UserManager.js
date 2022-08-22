@@ -16,50 +16,6 @@ const UserName = styled(`div`)({
   display:`flex`
 });
 
-// function customCheckbox({theme}) {
-//   return {
-//     "& .MuiCheckbox-root svg": {
-//       width: 16,
-//       height: 16,
-//       backgroundColor: "#3a3b3c",
-//       border: `3px solid "#d4af37"`,
-//       borderRadius: 2
-//     },
-//     "& .MuiCheckbox-root svg path": {
-//       display: "none"
-//     },
-//     "& .MuiCheckbox-root.Mui-checked:not(.MuiCheckbox-indeterminate) svg": {
-//       backgroundColor: "#d4af37",
-//       borderColor: "#3a3b3c",
-//       border: "2px solid #3a3b3c",
-//       borderRadius: 2,
-//     },
-//     "& .MuiCheckbox-root.Mui-checked .MuiIconButton-label:after": {
-//       position: "absolute",
-//       display: "table",
-//       border: "5px solid #3a3b3c",
-//       borderTop: 0,
-//       borderLeft: 0,
-//       transform: "rotate(45deg) translate(-50%,-50%)",
-//       opacity: 1,
-//       transition: "all .2s cubic-bezier(.12,.4,.29,1.46) .1s",
-//       content: '""',
-//       top: "50%",
-//       left: "39%",
-//       width: 5.71428571,
-//       height: 9.14285714
-//     },
-//     "& .MuiCheckbox-root.MuiCheckbox-indeterminate .MuiIconButton-label:after": {
-//       width: 8,
-//       height: 8,
-//       backgroundColor: "#4e44ce",
-//       transform: "none",
-//       top: "39%",
-//       border: `3 solid #d4af37`
-//     }
-//   };
-// }
-
 
 const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   width:"100%",

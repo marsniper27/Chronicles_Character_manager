@@ -16,7 +16,7 @@ const NavItem = props => {
       exact="true"
       to={to}
       className={style.navItem}
-      activeClassName={style.activeNavItem}
+      // activeClassName={style.activeNavItem}
     >
       <Icon className={style.navIcon} />
       <span className={style.navLabel}>{label}</span>

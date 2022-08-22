@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import logo from "../assets/logo_cropped.gif";
+import banner from "../assets/banner.jpg";
 import { useWallet, } from "@solana/wallet-adapter-react";
 import { useEffect,useState } from "react";
 const StyledHeader = styled.div`
@@ -10,7 +11,7 @@ const StyledHeader = styled.div`
   vertical-align:middle;
   width: 100%;
   min-height: 50px;
-  background-color: var(--black);
+  background-color: #000000;
   border-bottom: 3px solid #d4af37;
 `;
 
@@ -89,7 +90,7 @@ export function Header() {
           <LeftNav>
             <img style ={{height:80}}src={logo} alt="loading..." />
           </LeftNav>
-          <Title>Chronicles Character Manager</Title>
+          <img src={banner} style ={{height:100}} alt='Chronicles Character Manager' />
           <RightNav>
               <WalletMultiButton />
               <NavItem onClick={() =>navigate("/UserManager")}>User Managment</NavItem>
@@ -105,7 +106,8 @@ export function Header() {
           <LeftNav>
             <img style ={{height:80}}src={logo} alt="loading..." />
           </LeftNav>
-          <Title>Chronicles Character Manager</Title>
+          <img src={banner} style ={{height:120}} alt='Chronicles Character Manager' />
+          {/* <Title>Chronicles Character Manager</Title> */}
           <RightNav>
             <li>
               <WalletMultiButton />
