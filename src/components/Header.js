@@ -83,23 +83,23 @@ export function Header() {
     }
   },[publicKey],);
 
-  if(manager){
-    return (
-      <StyledHeader>
-        <InnerContainer>
-          <LeftNav>
-            <img style ={{height:80}}src={logo} alt="loading..." />
-          </LeftNav>
-          <img src={banner} style ={{height:100}} alt='Chronicles Character Manager' />
-          <RightNav>
-              <WalletMultiButton />
-              <NavItem onClick={() =>navigate("/UserManager")}>User Managment</NavItem>
-          </RightNav>
-        </InnerContainer>
-      </StyledHeader>
-    );
-  }
-  else{
+  // if(manager){
+  //   return (
+  //     <StyledHeader>
+  //       <InnerContainer>
+  //         <LeftNav>
+  //           <img style ={{height:80}}src={logo} alt="loading..." />
+  //         </LeftNav>
+  //         <img src={banner} style ={{height:100}} alt='Chronicles Character Manager' />
+  //         <RightNav>
+  //             <WalletMultiButton />
+  //             <NavItem onClick={() =>navigate("/UserManager")}>User Managment</NavItem>
+  //         </RightNav>
+  //       </InnerContainer>
+  //     </StyledHeader>
+  //   );
+  // }
+  // else{
     return (
       <StyledHeader>
         <InnerContainer>
@@ -116,5 +116,5 @@ export function Header() {
         </InnerContainer>
       </StyledHeader>
     );
-  }
+  // }
 }
