@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import{getplayers} from "./SqlInterface";
-import managers from "./managers.js";
+import managers from "./Managers.js";
 import {useWallet } from "@solana/wallet-adapter-react";
 import { useNavigate } from "react-router-dom";
 
