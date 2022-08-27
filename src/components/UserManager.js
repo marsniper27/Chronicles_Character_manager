@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import{getplayers} from "./SqlInterface";
-import managers from "./Managers";
+import Managers from "./Managers";
 import {useWallet } from "@solana/wallet-adapter-react";
 import { useNavigate } from "react-router-dom";
 
@@ -70,7 +70,7 @@ export function UserManager() {
 
   useEffect(() => {
     if(publicKey){
-      if(managers.includes(publicKey.toString())){
+      if(Managers.includes(publicKey.toString())){
         getPlayerdata()
       }
     }
