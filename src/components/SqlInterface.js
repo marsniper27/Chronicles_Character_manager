@@ -90,7 +90,7 @@ export function connectWallet(wallet,user){
           alert("you set wallet")
       }).catch(console.error);
 }
-s
+
 export function  getplayers(){
   return new Promise((resolve, reject) => {
     Axios.get('http://65.108.213.230:6363/player',{
