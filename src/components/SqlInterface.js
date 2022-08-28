@@ -93,7 +93,7 @@ export function connectWallet(wallet,user){
 
 export function  getplayers(){
   return new Promise((resolve, reject) => {
-    Axios.get('http://65.108.213.230:6363/player',{
+    Axios.get('http://muchfun.xyz:6363/player',{
       headers: {
         'Authorization': `Basic theapiphrase` 
       }})
