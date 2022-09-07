@@ -5,8 +5,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import{getplayers} from "./SqlInterface";
 import Managers from "./Managers";
-import {useWallet } from "@solana/wallet-adapter-react";
+import {useWallet,useConnection } from "@solana/wallet-adapter-react";
 import { useNavigate } from "react-router-dom";
+import { fetchNFTsOwnedByWallet } from "../lib/fetchNFTsByWallet";
+import { NFTItem } from "./NFTItem";
+import { PublicKey } from "@solana/web3.js";
 
 const Container = styled('div')({
   width:'100%'
@@ -16,6 +19,15 @@ const UserName = styled(`div`)({
   display:`flex`
 });
 
+const GridContainer = styled('div')({
+  display: 'grid',
+  height: '100vh',
+  width: '100',
+  color:'white',
+  gap: '5px',
+  gridTemplate: 'repeat(10, 1fr) / repeat(4, 1fr)',
+  textAlign: 'center',
+});
 
 const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   width:"100%",
@@ -66,6 +78,10 @@ const columns = [
 export function UserManager() {
   const [tableData, setTableData] = useState([])
   const { publicKey } = useWallet();
+  const [ buttonText, setbuttonText]= useState('Get Random Garg')
+  const [NFTs, setNFTs] = useState(null);
+  const { connection } = useConnection();
+  const [randomGarg, setRandomGarg] = useState(null)
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -86,6 +102,63 @@ export function UserManager() {
       console.log(tableData)
   }
 
+  async function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  
+  async function onGetNFTClick() {
+    if (!publicKey) return setNFTs(null);
+    setbuttonText ('Fetching NFTS');
+    let NFTs = await fetchNFTsOwnedByWallet(
+      new PublicKey(publicKey),
+      connection
+    );
+    if (typeof NFTs === "undefined") {
+      setNFTs(0);
+    } else {
+      setNFTs(NFTs);
+      let numNFT = await getRandomInt(NFTs.length)
+      console.log(numNFT)
+      let ranGarg = NFTs[numNFT]
+      console.log(ranGarg)
+      setRandomGarg(ranGarg)
+    }
+  }
+
+  if(randomGarg == null){
+    return (
+      <Container>
+        <div>
+          <StyledDataGrid 
+            checkboxSelection 
+            rows={tableData} 
+            columns={columns} 
+            GRID_CHECKBOX_SELECTION_COL_DEF ={columns}/> 
+        </div>
+        <div style={{display: "flex", }}>
+          <Button
+            variant="contained"
+            style={{ marginLeft: "auto" }}
+            onClick={() =>
+              getPlayerdata()
+            }
+            >
+            Refresh
+          </Button>
+        </div>
+        <Button
+              variant="contained"
+              style={{ marginRight: "auto" }}
+              onClick={() =>
+                onGetNFTClick()
+              }
+            >
+              {buttonText}
+        </Button>
+      </Container>
+    );
+  }
   return (
     <Container>
       <div>
@@ -94,18 +167,30 @@ export function UserManager() {
           rows={tableData} 
           columns={columns} 
           GRID_CHECKBOX_SELECTION_COL_DEF ={columns}/> 
-          </div>
-          <div style={{display: "flex", }}>
-          <Button
+      </div>
+      <div style={{display: "flex", }}>
+        <Button
+          variant="contained"
+          style={{ marginLeft: "auto" }}
+          onClick={() =>
+            getPlayerdata()
+          }
+          >
+          Refresh
+        </Button>
+      </div>
+      <Button
             variant="contained"
-            style={{ marginLeft: "auto" }}
+            style={{ marginRight: "auto" }}
             onClick={() =>
-              getPlayerdata()
+              onGetNFTClick()
             }
           >
-            Refresh
-          </Button>
-          </div>
+            {buttonText}
+      </Button>
+      <GridContainer>
+        <NFTItem item={randomGarg}/>
+      </GridContainer>
     </Container>
   );
 }

@@ -31,7 +31,7 @@ export function setGarg(garg,user) {
           'id':user
         },
         headers: {
-          'Authorization': `Basic 123` 
+          'Authorization': `Basic theapiphrase` 
       }
     }).then((response)=>{
       }).catch(console.error);
@@ -49,7 +49,7 @@ export function setGarg(garg,user) {
                   'id':user
                 },
                 headers: {
-                  'Authorization': `Basic 123` 
+                  'Authorization': `Basic theapiphrase` 
               }
             }).then((response)=>{
                   alert("you set your garg")
@@ -64,7 +64,7 @@ export function getUserData(wallet){
       'wallet':'"'+wallet+'"'
     },
     headers: {
-      'Authorization': `Basic 123`,
+      'Authorization': `Basic theapiphrase`,
     }}).then((response)=>{
       resolve(response);
     }).catch((error)=>{
@@ -84,7 +84,7 @@ export function connectWallet(wallet,user){
           'id':user
         },
         headers: {
-          'Authorization': `Basic 123` 
+          'Authorization': `Basic theapiphrase` 
       }
     }).then((response)=>{
           alert("you set wallet")
@@ -93,7 +93,7 @@ export function connectWallet(wallet,user){
 
 export function  getplayers(){
   return new Promise((resolve, reject) => {
-    Axios.get('http://muchfun.xyz:6363/player',{
+    Axios.get('http://localhost:3030/player',{
       headers: {
         'Authorization': `Basic theapiphrase` 
       }})
