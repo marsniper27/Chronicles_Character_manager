@@ -21,7 +21,6 @@
     "better-sqlite3": "^7.6.2",
     "caniuse-lite": "^1.0.30001380",
     "discord-oauth2": "^2.10.0",
-    "dotenv": "^16.0.2",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.2.9",
     "react": "^17.0.2",

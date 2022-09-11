@@ -20,9 +20,19 @@ import Axios from 'axios'
 //   const [discordUser, setDiscordUser] = useState(null);
 //   return [discordUser, setDiscordUser]
 // }
+var serverUrl;
+var apiKey;
+if(process.env.REACT_APP_ENV==="Test"){
+  serverUrl = 'http://localhost:3030/player/'
+  apiKey = "Basic 123"
+}
+else{
+  serverUrl = process.env.REACT_APP_SERVER_URL;
+  apiKey = process.env.REACT_APP_API_KEY;
+}
 
 export function setGarg(garg,user) {
-  Axios.patch('http://localhost:3030/player/:id/',
+  Axios.patch(serverUrl+ ':id/',
       {
         'garg':garg.props.item.data.name
       },
@@ -31,7 +41,7 @@ export function setGarg(garg,user) {
           'id':user
         },
         headers: {
-          'Authorization': `Basic theapiphrase` 
+          'Authorization': apiKey 
       }
     }).then((response)=>{
       }).catch(console.error);
@@ -40,7 +50,7 @@ export function setGarg(garg,user) {
     .then((res)=>{
       res.json()
         .then((uriInfo)=>{ 
-          Axios.patch('http://localhost:3030/player/:id/',
+          Axios.patch(serverUrl+ ':id/',
               {
                 'imageUrl':uriInfo.image
               },
@@ -49,7 +59,7 @@ export function setGarg(garg,user) {
                   'id':user
                 },
                 headers: {
-                  'Authorization': `Basic theapiphrase` 
+                  'Authorization': apiKey 
               }
             }).then((response)=>{
                   alert("you set your garg")
@@ -59,12 +69,12 @@ export function setGarg(garg,user) {
 
 export function getUserData(wallet){
   return new Promise((resolve, reject) => {
-  Axios.get('http://localhost:3030/player/wallet',{
+  Axios.get(serverUrl+ 'wallet',{
     params:{
       'wallet':'"'+wallet+'"'
     },
     headers: {
-      'Authorization': `Basic theapiphrase`,
+      'Authorization': apiKey,
     }}).then((response)=>{
       resolve(response);
     }).catch((error)=>{
@@ -75,7 +85,7 @@ export function getUserData(wallet){
 }
 
 export function connectWallet(wallet,user){
-      Axios.patch('http://localhost:3030/player/:id/',
+      Axios.patch(serverUrl+ ':id/',
       {
         'wallet':wallet
       },
@@ -93,9 +103,9 @@ export function connectWallet(wallet,user){
 
 export function  getplayers(){
   return new Promise((resolve, reject) => {
-    Axios.get('http://localhost:3030/player',{
+    Axios.get(serverUrl,{
       headers: {
-        'Authorization': `Basic theapiphrase` 
+        'Authorization': apiKey 
       }})
     .then((data)=>{
         resolve(data.data);

@@ -26,8 +26,8 @@ export function Welcome({network}) {
     
     const DiscordOauth2 = require("discord-oauth2");
     const oauth = new DiscordOauth2({
-        clientId: process.env.client_id,
-        clientSecret: process.env.client_secret,
+        clientId: process.env.REACT_APP_client_id,
+        clientSecret: process.env.REACT_APP_client_secret,
         redirectUri: redirectUri,
     });
     
@@ -61,14 +61,15 @@ export function Welcome({network}) {
                 }).catch(console.error);
             }).catch(console.error);
         }
-        if(process.env.ENV === "TEST"){
+        console.log(process.env.REACT_APP_ENV)
+        if(process.env.REACT_APP_ENV === "Test"){
             setAuthUrl("https://discord.com/api/oauth2/authorize?client_id=975582303734607872&redirect_uri=http%3A%2F%2Flocalhost%3A3000&response_type=code&scope=identify");
             setredirectUri('http://localhost:3000')
         }
         else{
-            console.log(process.env.AUTH_URL);
-            setAuthUrl(process.env.AUTH_URL);
-            setredirectUri(process.env.REDIRECT_URL);
+            console.log(process.env.REACT_APP_AUTH_URL);
+            setAuthUrl(process.env.REACT_APP_AUTH_URL);
+            setredirectUri(process.env.REACT_APP_REDIRECT_URL);
         }
     },[])
 
@@ -92,7 +93,7 @@ export function Welcome({network}) {
             <Container>
                 <h1>Welcome</h1>
                 <h2>Please connect your wallet</h2>
-                <button onClick={() => {console.log(process.env); window.open(authUrl, '_self', 'noopener,noreferrer');}}>
+                <button onClick={() => {console.log(process.env.REACT_APP_AUTH_URL); window.open(authUrl, '_self', 'noopener,noreferrer');}}>
                     Authorize Discord
                 </button>
             </Container>
