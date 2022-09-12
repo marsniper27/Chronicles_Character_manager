@@ -36,24 +36,27 @@ const Button = styled.button`
 
 
 export function SelectedGarg( props) {
-    const selectednft = props.selectednft;
+    const [selectednft, setSetlectedNft] = useState(props.selectednft);
     const discordUser = props.discordUser
-    const [currentGarg, setCurrentGarg] = useState(null);
+    const [currentGarg, setCurrentGarg] = useState(props.currentGarg);
     const [currentSet, setCurrentSet] = useState(props.fromDB);
     //const [discordUser, setDiscordUser] =useContext(UserContext);
     
     useEffect(()=>{
-        if(props.selectednft !== 'No Gargoyle Selected' & currentSet){
-            setCurrentGarg(props.selectednft)
-            setCurrentSet(false)
-        }
+        setSetlectedNft(props.selectednft)
     },[props.selectednft])
+    
+    useEffect(()=>{
+        setCurrentGarg(props.currentGarg)
+    },[props.currentGarg])
     
   
     function confirmGarg(){
         setCurrentGarg(selectednft)
         setGarg(selectednft,discordUser.id)
+        setCurrentSet(true)
     }
+
     if(selectednft !== 'No Gargoyle Selected' && currentGarg === null){
         return (
             <SelectedContainer>
@@ -62,7 +65,14 @@ export function SelectedGarg( props) {
             </SelectedContainer>
         )
     }
-    if(selectednft !== 'No Gargoyle Selected' && currentGarg.props.item.data.name !== selectednft.props.item.data.name){
+    else if(selectednft === 'No Gargoyle Selected' && currentGarg !== null ){
+        return (
+            <SelectedContainer>
+                <h1>Current Gargoyle: {currentGarg}</h1>
+            </SelectedContainer>
+        )
+    }
+    else if(selectednft !== 'No Gargoyle Selected' && currentGarg.props.item.data.name !== selectednft.props.item.data.name){
         return(
             <GridContainer>
                 <SelectedContainer>
@@ -76,19 +86,10 @@ export function SelectedGarg( props) {
         )
     }
     else{
-        if(currentGarg === null){
-            return (
-                <SelectedContainer>
-                    <h1>Selected Gargoyle: {selectednft}</h1>
-                </SelectedContainer>
-            )
-        }
-        else{
-            return(
-                <SelectedContainer>
-                    <h1>Current Gargoyle: {currentGarg}</h1>
-                </SelectedContainer>
-            )
-        }
+        return(
+            <SelectedContainer>
+                <h1>{selectednft}</h1>
+            </SelectedContainer>
+        )
     }
 }

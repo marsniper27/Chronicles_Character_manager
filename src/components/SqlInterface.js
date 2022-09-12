@@ -23,7 +23,7 @@ import Axios from 'axios'
 var serverUrl;
 var apiKey;
 if(process.env.REACT_APP_ENV==="Test"){
-  serverUrl = 'http://localhost:3030/player/'
+  serverUrl = 'http://localhost:4000/player/'
   apiKey = "Basic 123"
 }
 else{
@@ -85,6 +85,7 @@ export function getUserData(wallet){
 }
 
 export function connectWallet(wallet,user){
+  return new Promise((resolve, reject) => {
       Axios.patch(serverUrl+ ':id/',
       {
         'wallet':wallet
@@ -94,11 +95,16 @@ export function connectWallet(wallet,user){
           'id':user
         },
         headers: {
-          'Authorization': `Basic theapiphrase` 
+          'Authorization': apiKey 
       }
     }).then((response)=>{
           alert("you set wallet")
-      }).catch(console.error);
+          resolve(true);
+      }).catch((error)=>{
+        console.log(error);
+        reject(false)
+      });
+    })
 }
 
 export function  getplayers(){

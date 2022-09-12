@@ -56,16 +56,22 @@ export function NFTContainer( props) {
   const [NFTs, setNFTs] = useState(null);
   const [selectednft, setselectednft] = useState('No Gargoyle Selected');
   const [ buttonText, setbuttonTest]= useState('Get NFTS')
+  const [currentGarg,setCurrentGarg] = useState(null)
   
   useEffect(()=>{
       if(selectednft === 'No Gargoyle Selected' & NFTs !== null){
         NFTs.forEach(nft => {
           if(nft.data.name === props.currentGarg){
-            setselectednft(<NFTItem item={nft} />)
+            setCurrentGarg(<NFTItem item={nft} />)
+            return;
           }
         });
       }
   },[props.currentGarg,NFTs])
+
+  useEffect(()=>{
+    onGetNFTClick()
+},[])
 
   async function onGetNFTClick() {
     setbuttonTest ('Fetching NFTS');
@@ -107,7 +113,7 @@ export function NFTContainer( props) {
     }
     return (
       <div>
-        <SelectedGarg selectednft = {selectednft} discordUser = {discordUser} fromDB = {props.fromDB}/>
+        <SelectedGarg selectednft = {selectednft} currentGarg= {currentGarg} discordUser = {discordUser} fromDB = {props.fromDB}/>
         <GridContainer>
             {NFTs &&
               NFTs.map((item) => {
