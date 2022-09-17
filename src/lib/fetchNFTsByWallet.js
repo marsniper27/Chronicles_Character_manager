@@ -1,6 +1,6 @@
 // Courtesy of mmdhrumil#9327 on discord
 
-import { programs } from "@metaplex/js/";
+import { programs } from "@metaplex/js/"
 import { PublicKey } from "@solana/web3.js";
 
 const {

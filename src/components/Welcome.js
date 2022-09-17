@@ -29,7 +29,8 @@ export function Welcome({network}) {
     
     useEffect(()=>{
         if(publicKey !== null & discordUser===null){
-            getUserData(publicKey.toString()).then((data)=>{
+            getUserData(publicKey.toString())
+            .then((data)=>{
                 if(data){
                     let user = {
                         id:data.data.id,
@@ -39,6 +40,8 @@ export function Welcome({network}) {
                     setCurrentGarg(data.data.garg)
                     setWalletSet(true)
                 }
+            }).catch((error)=>{
+                console.log(error);
             });
         }
     },[publicKey],);

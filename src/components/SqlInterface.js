@@ -69,17 +69,17 @@ export function setGarg(garg,user) {
 
 export function getUserData(wallet){
   return new Promise((resolve, reject) => {
-  Axios.get(serverUrl+ 'wallet',{
-    params:{
-      'wallet':'"'+wallet+'"'
-    },
-    headers: {
-      'Authorization': apiKey,
+    Axios.get(serverUrl+ 'wallet',{
+      params:{
+        'wallet':'"'+wallet+'"'
+      },
+      headers: {
+        'Authorization': apiKey,
     }}).then((response)=>{
       resolve(response);
     }).catch((error)=>{
       console.log(error);
-      reject(null)
+      reject(false)
     });
   })
 }
